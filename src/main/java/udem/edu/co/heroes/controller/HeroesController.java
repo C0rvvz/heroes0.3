@@ -1,26 +1,30 @@
 package udem.edu.co.heroes.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import udem.edu.co.heroes.entities.Heroes;
+import udem.edu.co.heroes.entities.Poderes;
 import udem.edu.co.heroes.service.HeroesService;
+import udem.edu.co.heroes.service.PoderesService;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1")
+@RequestMapping(path = "/heroes")
 public class HeroesController {
 
+    @Autowired
     HeroesService heroesService;
 
-    public HeroesController(HeroesService userService) {
+    public HeroesController(HeroesService heroesService) {
         this.heroesService = heroesService;
     }
 
     @GetMapping("/heroes/")
-    public Heroes findAllHeroes() {
-        return (Heroes) this.heroesService.findAllHeroes();
+    public List<Heroes> findAllHeroes() {
+        return this.heroesService.findAllHeroes();
     }
 
     @GetMapping("/heroes/{name}")
@@ -29,17 +33,17 @@ public class HeroesController {
     }
 
     @PostMapping("/heroes")
-    public Heroes updateHeroes(@RequestBody() Heroes heroes) {
+    public Heroes createHeroes(@RequestBody() Heroes heroes) {
         return this.heroesService.createHeroes(heroes);
     }
 
     @PutMapping("/heroes/{name}")
-    public ResponseEntity<Heroes> updateHeroes(@RequestParam("name") int name ){
-        return null;
+    public Heroes updateHeroes(@PathVariable("name") String name , @RequestBody() Heroes heroes) {
+        return this.heroesService.updateHeroes(name, heroes);
     }
 
     @DeleteMapping("/heroes/{name}")
-    public ResponseEntity<Heroes> deleteHeroes(@PathVariable("name") int name) {
-        return null;
+    public void deleteHeroes(@PathVariable("name") String name) {
+        this.heroesService.deleteHeroes(name);
     }
 }

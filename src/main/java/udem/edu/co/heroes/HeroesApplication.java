@@ -1,15 +1,13 @@
 package udem.edu.co.heroes;
 
-import org.junit.Test;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class HeroesApplication {
+@SpringBootApplication
+public class HeroesApplication {
 
-	@Test
-	void contextLoads() {
+	public static void main(String[] args) {
+		SpringApplication.run(HeroesApplication.class, args);
 	}
-
 }

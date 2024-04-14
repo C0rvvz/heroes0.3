@@ -1,6 +1,7 @@
 package udem.edu.co.heroes.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import udem.edu.co.heroes.entities.Poderes;
 import udem.edu.co.heroes.repository.PoderesRepository;
 import udem.edu.co.heroes.service.PoderesService;
@@ -8,6 +9,7 @@ import udem.edu.co.heroes.service.PoderesService;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PoderesServiceImpl implements PoderesService{
     @Autowired
     PoderesRepository poderesRepository;
@@ -19,38 +21,21 @@ public class PoderesServiceImpl implements PoderesService{
 
     @Override
     public Optional<Poderes> findByIdPoderes(String name){
-        return poderesRepository.findById(name);
+        return (Optional<Poderes>) poderesRepository.findById(name);
     }
 
     @Override
     public Poderes createPoderes(Poderes poderes){
-        poderesRepository.save()
-        return poderesRepository.get();
+        return (Poderes) poderesRepository.save(poderes);
     }
 
     @Override
-    public Poderes UpdatePoderes() {
-        return null;
+    public Poderes updatePoderes(String name, Poderes poderes) {
+        return (Poderes) poderesRepository.save(poderes);
     }
 
     @Override
-    public Poderes deletePoderes(String name) {
-        return null;
-    }
-
-    @Override
-    public Poderes UpdatePoderes(Poderes updatedPoderes){
-        poderesRepository.save(updatedPoderes);
-        return updatedPoderes;
-    }
-
-    @Override
-    public Poderes DeletePoderes(String name){
-        Poderes poderesToDelete = new Poderes();
-        poderesToDelete.setName(name);
-        return poderesRepository.delete(poderesToDelete);
-
-
-        return poderesToDelete;
+    public void deletePoderes(String name) {
+        poderesRepository.deleteById(name);
     }
 }
