@@ -1,7 +1,8 @@
 package udem.edu.co.heroes.controller;
 
 import org.springframework.web.bind.annotation.*;
-import udem.edu.co.heroes.entities.Poderes;
+import udem.edu.co.heroes.entities.Heroe;
+import udem.edu.co.heroes.entities.Poder;
 import udem.edu.co.heroes.service.PoderesService;
 
 import java.util.List;
@@ -18,27 +19,27 @@ public class PoderesController {
     }
 
     @GetMapping("/poderes/")
-    public List<Poderes> findAllPoderes() {
-        return this.poderesService.findAllPoderes();
+    public List<Poder> findAllPoderes() {
+        return this.poderesService.findAllPoder();
     }
 
     @GetMapping("/poderes/{name}")
-    public Optional<Poderes> findPoderesById(@RequestParam("name") String name) {
-        return this.poderesService.findByIdPoderes(name);
+    public Optional<Poder> findPoderesById(@RequestParam("name") String name) {
+        return this.poderesService.findByIdPoder(name);
     }
 
     @PostMapping("/poderes")
-    public Poderes createPoderes(@RequestBody() Poderes poderes)  {
-        return this.poderesService.createPoderes(poderes);
+    public Poder createPoderes(@RequestBody() Poder poderes)  {
+        return this.poderesService.createPoder(poderes);
     }
 
     @PutMapping("/poderes/{name}")
-    public Poderes updatePoderes(@RequestParam("name") String name, @RequestBody() Poderes poderes){
-        return this.poderesService.updatePoderes(name, poderes);
+    public Poder updatePoderes(@RequestParam("name") String name, @RequestBody() Poder poderes){
+        return this.poderesService.updatePoder(name, poderes);
     }
 
     @DeleteMapping("/poderes/{name}")
     public void deletePoderes(@PathVariable("name") String name) {
-        this.poderesService.deletePoderes(name);
+        this.poderesService.deletePoder(name);
     }
 }

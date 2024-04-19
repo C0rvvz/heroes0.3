@@ -8,7 +8,7 @@ group = 'udem.edu.co'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = '17'
 }
 
 configurations {
@@ -27,6 +27,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
+
 }
 
 tasks.named('test') {

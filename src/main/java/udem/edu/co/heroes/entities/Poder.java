@@ -5,17 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="heroes")
-public class Heroes {
+@Table(name="poder")
+public class Poder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String name;
-    private List<Poderes> poderes;
+
+    @ManyToOne
+    private Heroe heroe;
 }

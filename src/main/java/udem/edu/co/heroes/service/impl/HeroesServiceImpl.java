@@ -3,9 +3,8 @@ package udem.edu.co.heroes.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import udem.edu.co.heroes.entities.Heroes;
-import udem.edu.co.heroes.entities.Poderes;
-import udem.edu.co.heroes.repository.HeroesRepository;
+import udem.edu.co.heroes.entities.Heroe;
+import udem.edu.co.heroes.repository.HeroeRepository;
 import udem.edu.co.heroes.service.HeroesService;
 
 import java.util.List;
@@ -15,30 +14,37 @@ import java.util.Optional;
 public class HeroesServiceImpl implements HeroesService {
 
     @Autowired
-    HeroesRepository heroesRepository;
+    HeroeRepository heroeRepository;
 
     @Override
-    public List<Heroes> findAllHeroes(){
-        return (List<Heroes>) heroesRepository.findAll();
+    public Optional<Heroe> findByAliasHeroes(String alias) {
+        return (Optional<Heroe>) heroeRepository.findById(alias);
     }
 
     @Override
-    public Optional<Heroes> findByIdHeroes(String name){
-        return (Optional<Heroes>) heroesRepository.findById(name);
+    public List<Heroe> findAllHeroes(){
+        return (List<Heroe>) heroeRepository.findAll();
     }
 
     @Override
-    public Heroes createHeroes(Heroes heroes){
-        return (Heroes) heroesRepository.save(heroes);
+    public Optional<Heroe> findByIdHeroes(String name){
+        return (Optional<Heroe>) heroeRepository.findById(name);
     }
 
     @Override
-    public Heroes updateHeroes(String name, Heroes heroes){
-        return (Heroes) heroesRepository.save(heroes);
+    public Heroe createHeroes(Heroe heroes){
+        return (Heroe) heroeRepository.save(heroes);
+    }
+
+    @Override
+    public Heroe updateHeroes(String name, Heroe heroes){
+        return (Heroe) heroeRepository.save(heroes);
     }
 
     @Override
     public void deleteHeroes(String name){
-        heroesRepository.delete(name);
+        Heroe heroeEliminado = new Heroe();
+        heroeEliminado.setName(name);
+        heroeRepository.delete(heroeEliminado);
     }
 }
