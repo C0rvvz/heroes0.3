@@ -16,5 +16,6 @@ public class Poder {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "heroe_id")
     private Heroe heroe;
 }

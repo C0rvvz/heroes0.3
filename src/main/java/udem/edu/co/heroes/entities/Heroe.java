@@ -1,5 +1,6 @@
 package udem.edu.co.heroes.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class Heroe {
     private String name;
     private String alias;
 
-    @OneToMany
+    @OneToMany(mappedBy = "heroe", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Poder> poder;
 }
