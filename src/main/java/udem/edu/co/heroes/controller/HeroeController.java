@@ -23,10 +23,11 @@ public class HeroeController {
             return this.heroeService.findAllHeroes();
         } catch (IOException e) {
             System.err.println("ERROR: informacion no valida:\n");
+            return null;
         } catch (SQLException e) {
             System.err.println("ERROR: No existen heroes:\n");
+            return null;
         }
-        return List.of();
     }
 
     @GetMapping("/heroe/{name}")
@@ -35,10 +36,11 @@ public class HeroeController {
             return this.heroeService.findByIdHeroe(name);
         } catch (IOException e) {
             System.err.println("ERROR: informacion no valida:\n");
+            return null;
         } catch (SQLException e) {
             System.err.println("ERROR: El nombre no existe:\n");
+            return null;
         }
-        return Optional.empty();
     }
 
     @GetMapping("/heroe/alias/{alias}")
@@ -47,10 +49,11 @@ public class HeroeController {
             return this.heroeService.findByAliasHeroe(alias);
         } catch (IOException e) {
             System.err.println("ERROR: informacion no valida:\n");
+            return null;
         } catch (SQLException e) {
             System.err.println("ERROR: El alias no existe:\n");
+            return null;
         }
-        return Optional.empty();
     }
 
     @PostMapping("/heroe")
@@ -59,8 +62,9 @@ public class HeroeController {
             return this.heroeService.createHeroe(heroe);
         } catch (IOException e) {
             System.err.println("ERROR: informacion no valida:\n");
+            return null;
         }
-        return heroe;
+
     }
 
     @PutMapping("/heroe/{name}")
@@ -69,8 +73,8 @@ public class HeroeController {
             return this.heroeService.updateHeroe(name, heroe);
         } catch (IOException e) {
             System.err.println("ERROR: informacion no valida:\n");
+            return null;
         }
-        return heroe;
     }
 
     @DeleteMapping("/heroe/{name}")

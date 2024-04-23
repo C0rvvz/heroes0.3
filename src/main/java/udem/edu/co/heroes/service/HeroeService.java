@@ -12,8 +12,10 @@ import java.util.Optional;
 public interface HeroeService {
     public List<Heroe> findAllHeroes() throws IOException, SQLException;
     public Optional<Heroe> findByIdHeroe(String name) throws IOException, SQLException;
-    public Heroe createHeroe(Heroe heroes) throws IOException;
-    public Heroe updateHeroe(String name, Heroe heroes) throws IOException;
+    public Heroe createHeroe(Heroe heroe) throws IOException;
+    public Heroe updateHeroe(String name, Heroe heroe) throws IOException;
     public Optional<Heroe> findByAliasHeroe(String alias) throws IOException, SQLException;
     public void deleteHeroe(String name) throws IOException;
 }
+
+

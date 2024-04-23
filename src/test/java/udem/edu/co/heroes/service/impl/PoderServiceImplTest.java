@@ -13,6 +13,8 @@ import udem.edu.co.heroes.repository.PoderRepository;
 import udem.edu.co.heroes.service.HeroeService;
 import udem.edu.co.heroes.service.PoderService;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,28 +47,54 @@ class PoderServiceImplTest {
     }
 
     @Test
-    void findAllPoder() {
+    void findAllPoderWithData() throws SQLException, IOException {
         List<Poder> poderes = new ArrayList<>();
         poderes.add(poder);
         when(poderRepository.findAll()).thenReturn(poderes);
+        assertNotNull(poderService.findAllPoder());
     }
 
     @Test
-    void findByIdPoder() {
+    void findAllPoderNull() throws SQLException, IOException {
+        List<Poder> poderes = new ArrayList<>();
+        poderes.add(poder);
+        when(poderRepository.findAll()).thenReturn(poderes);
+        assertNull(poderService.findAllPoder());
+    }
+
+    @Test
+    void findByIdPoderWithData() throws SQLException, IOException {
         when(poderRepository.findById(poder.getName())).thenReturn(Optional.of(poder));
+        assertNotNull(poderService.findByIdPoder(poder.getName()));
     }
 
     @Test
-    void createPoder() {
+    void findByIdPoderNull() throws SQLException, IOException {
+        when(poderRepository.findById(poder.getName())).thenReturn(Optional.of(poder));
+        assertNull(poderService.findByIdPoder(poder.getName()));
+    }
+
+    @Test
+    void createPoderWithData() throws IOException {
         when(poderRepository.save(poder)).thenReturn(poder);
+        assertNotNull(poderService.createPoder(poder));
     }
 
     @Test
-    void updatePoder() {
+    void createPoderNull() throws IOException {
         when(poderRepository.save(poder)).thenReturn(poder);
+        assertNull(poderService.createPoder(poder));
     }
 
     @Test
-    void deletePoder() {
+    void updatePoderWithData() throws IOException {
+        when(poderRepository.save(poder)).thenReturn(poder);
+        assertNotNull(poderService.updatePoder(poder.getName(),poder));
+    }
+
+    @Test
+    void updatePoderNull() throws IOException {
+        when(poderRepository.save(poder)).thenReturn(poder);
+        assertNull(poderService.updatePoder(poder.getName(),poder));
     }
 }

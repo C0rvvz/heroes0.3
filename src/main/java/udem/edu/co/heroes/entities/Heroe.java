@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="heroe")
-public class Heroe {
+public class Heroe{
 
     @Id
     private String name;
