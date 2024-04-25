@@ -3,13 +3,13 @@ package udem.edu.co.heroes.service.impl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import udem.edu.co.heroes.entities.Heroe;
 import udem.edu.co.heroes.entities.Poder;
 import udem.edu.co.heroes.repository.HeroeRepository;
-import udem.edu.co.heroes.service.HeroeService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class HeroeServiceImplTest {
 
     @Mock
@@ -37,8 +38,6 @@ class HeroeServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
-
         heroe = new Heroe("Batman", "Pepito");
         poder = new Poder("Correr", heroe);
         poderes = new ArrayList<>();
@@ -54,9 +53,7 @@ class HeroeServiceImplTest {
 
     @Test
     void findAllHeroesNull() throws SQLException, IOException {
-        List<Heroe> heroes = new ArrayList<>();
-        heroes.add(heroe);
-        when(heroeRepository.findAll()).thenReturn(heroes);
+        when(heroeRepository.findAll()).thenReturn(null);
         assertNull(heroeService.findAllHeroes());
     }
 
@@ -68,7 +65,7 @@ class HeroeServiceImplTest {
 
     @Test
     void findByIdHeroeNull() throws SQLException, IOException {
-        when(heroeRepository.findById(heroe.getName())).thenReturn(Optional.of(heroe));
+        when(heroeRepository.findById(heroe.getName())).thenReturn(null);
         assertNull(heroeService.findByIdHeroe(heroe.getName()));
     }
 
@@ -80,7 +77,7 @@ class HeroeServiceImplTest {
 
     @Test
     void findByAliasHeroeNull() throws SQLException, IOException {
-        when(heroeRepository.findById(heroe.getAlias())).thenReturn(Optional.of(heroe));
+        when(heroeRepository.findById(heroe.getAlias())).thenReturn(null);
         assertNull(heroeService.findByAliasHeroe(heroe.getAlias()));
     }
 
@@ -92,8 +89,8 @@ class HeroeServiceImplTest {
 
     @Test
     void createHeroeNull() throws IOException {
-        when(heroeRepository.save(heroe)).thenReturn(heroe);
-        assertNull(heroeService.createHeroe(heroe));
+        when(heroeRepository.save(null)).thenReturn(null);
+        assertNull(heroeService.createHeroe(null));
     }
 
     @Test
@@ -101,6 +98,7 @@ class HeroeServiceImplTest {
         when(heroeRepository.save(heroe)).thenReturn(heroe);
         assertNotNull(heroeService.createHeroe(heroe));
     }
+
     @Test
     void updateHeroeNull() throws IOException {
         when(heroeRepository.save(heroe)).thenReturn(heroe);

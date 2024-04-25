@@ -3,9 +3,11 @@ package udem.edu.co.heroes.service.impl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import udem.edu.co.heroes.entities.Heroe;
 import udem.edu.co.heroes.entities.Poder;
 import udem.edu.co.heroes.repository.HeroeRepository;
@@ -21,24 +23,26 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class)
 class PoderServiceImplTest {
-
-    @InjectMocks
-    private PoderServiceImpl poderService;
 
     @Mock
     private PoderRepository poderRepository;
 
+    @InjectMocks
+    private PoderServiceImpl poderService;
+
     private Poder poder;
     private Heroe heroe;
+    private List<Poder> poderes;
 
     private AutoCloseable openMock;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        heroe = new Heroe("Batman", "Pepito");
         poder = new Poder("Correr", heroe);
+        poderes = new ArrayList<>();
     }
 
     @Test
@@ -51,9 +55,7 @@ class PoderServiceImplTest {
 
     @Test
     void findAllPoderNull() throws SQLException, IOException {
-        List<Poder> poderes = new ArrayList<>();
-        poderes.add(poder);
-        when(poderRepository.findAll()).thenReturn(poderes);
+        when(poderRepository.findAll()).thenReturn(null);
         assertNull(poderService.findAllPoder());
     }
 
@@ -65,7 +67,7 @@ class PoderServiceImplTest {
 
     @Test
     void findByIdPoderNull() throws SQLException, IOException {
-        when(poderRepository.findById(poder.getName())).thenReturn(Optional.of(poder));
+        when(poderRepository.findById(poder.getName())).thenReturn(null);
         assertNull(poderService.findByIdPoder(poder.getName()));
     }
 
@@ -77,8 +79,8 @@ class PoderServiceImplTest {
 
     @Test
     void createPoderNull() throws IOException {
-        when(poderRepository.save(poder)).thenReturn(poder);
-        assertNull(poderService.createPoder(poder));
+        when(poderRepository.save(null)).thenReturn(null);
+        assertNull(poderService.createPoder(null));
     }
 
     @Test
@@ -89,7 +91,7 @@ class PoderServiceImplTest {
 
     @Test
     void updatePoderNull() throws IOException {
-        when(poderRepository.save(poder)).thenReturn(poder);
-        assertNull(poderService.updatePoder(poder.getName(),poder));
+        when(poderRepository.save(null)).thenReturn(null);
+        assertNull(poderService.updatePoder(null,null));
     }
 }
