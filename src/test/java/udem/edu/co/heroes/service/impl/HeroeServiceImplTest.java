@@ -23,38 +23,25 @@ import static org.mockito.Mockito.when;
 
 class HeroeServiceImplTest {
 
-    @InjectMocks
-    private HeroeService heroeService;
-
     @Mock
     private HeroeRepository heroeRepository;
 
+    @InjectMocks
+    private HeroeServiceImpl heroeService;
+
     private Heroe heroe;
-    private List<Poder> poder;
+    private Poder poder;
+    private List<Poder> poderes;
 
     private AutoCloseable openMock;
 
     @BeforeEach
     void setUp() {
-        openMock = MockitoAnnotations.openMocks(this);
-        heroe = new Heroe("Batman", "Pepito", poder);
-    }
+        MockitoAnnotations.initMocks(this);
 
-    @AfterEach
-    void tearDown() throws Exception {
-         openMock.close();
-    }
-
-    @Test
-    void findByAliasHeroeWithData() throws SQLException, IOException {
-        when(heroeRepository.findById(heroe.getAlias())).thenReturn(Optional.of(heroe));
-        assertNotNull(heroeService.findByAliasHeroe(heroe.getAlias()));
-    }
-
-    @Test
-    void findByAliasHeroeNull() throws SQLException, IOException {
-        when(heroeRepository.findById(heroe.getAlias())).thenReturn(Optional.of(heroe));
-        assertNull(heroeService.findByAliasHeroe(heroe.getAlias()));
+        heroe = new Heroe("Batman", "Pepito");
+        poder = new Poder("Correr", heroe);
+        poderes = new ArrayList<>();
     }
 
     @Test
@@ -83,6 +70,18 @@ class HeroeServiceImplTest {
     void findByIdHeroeNull() throws SQLException, IOException {
         when(heroeRepository.findById(heroe.getName())).thenReturn(Optional.of(heroe));
         assertNull(heroeService.findByIdHeroe(heroe.getName()));
+    }
+
+    @Test
+    void findByAliasHeroeWithData() throws SQLException, IOException {
+        when(heroeRepository.findById(heroe.getAlias())).thenReturn(Optional.of(heroe));
+        assertNotNull(heroeService.findByAliasHeroe(heroe.getAlias()));
+    }
+
+    @Test
+    void findByAliasHeroeNull() throws SQLException, IOException {
+        when(heroeRepository.findById(heroe.getAlias())).thenReturn(Optional.of(heroe));
+        assertNull(heroeService.findByAliasHeroe(heroe.getAlias()));
     }
 
     @Test

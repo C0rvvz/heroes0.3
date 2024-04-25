@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 class PoderServiceImplTest {
 
     @InjectMocks
-    private PoderService poderService;
+    private PoderServiceImpl poderService;
 
     @Mock
     private PoderRepository poderRepository;
@@ -37,13 +37,8 @@ class PoderServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        openMock = MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         poder = new Poder("Correr", heroe);
-    }
-
-    @AfterEach
-    void tearDown() throws Exception {
-        openMock.close();
     }
 
     @Test

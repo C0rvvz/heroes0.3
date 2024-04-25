@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name="poder")
 public class Poder {
@@ -16,6 +15,11 @@ public class Poder {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "heroe_id")
+    @JoinColumn(name = "name")
     private Heroe heroe;
+
+    public Poder(String name, Heroe heroe) {
+        this.name = name;
+        this.heroe = heroe;
+    }
 }

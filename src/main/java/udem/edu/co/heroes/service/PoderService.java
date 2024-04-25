@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface PoderService {
     public List<Poder> findAllPoder() throws IOException, SQLException;
     public Optional<Poder> findByIdPoder(String name) throws IOException, SQLException;
-    public Poder createPoder(Poder poderes) throws IOException;
-    public Poder updatePoder(String name, Poder poderes) throws IOException;
+    public Poder createPoder(Poder poder) throws IOException;
+    public Poder updatePoder(String name, Poder poder) throws IOException;
     public void deletePoder(String name) throws IOException;
 }

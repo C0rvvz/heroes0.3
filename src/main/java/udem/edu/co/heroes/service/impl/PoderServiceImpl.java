@@ -27,8 +27,8 @@ public class PoderServiceImpl implements PoderService {
     }
 
     @Override
-    public Poder createPoder(Poder poderes) throws IOException{
-        return (Poder) poderRepository.save(poderes);
+    public Poder createPoder(Poder poder) throws IOException{
+        return (Poder) poderRepository.save(poder);
     }
 
     @Override

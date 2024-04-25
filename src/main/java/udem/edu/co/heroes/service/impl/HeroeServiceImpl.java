@@ -1,7 +1,5 @@
 package udem.edu.co.heroes.service.impl;
 
-
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import udem.edu.co.heroes.entities.Heroe;
@@ -21,11 +19,6 @@ public class HeroeServiceImpl implements HeroeService {
     HeroeRepository heroeRepository;
 
     @Override
-    public Optional<Heroe> findByAliasHeroe(String alias) throws IOException, SQLException {
-        return (Optional<Heroe>) heroeRepository.findById(alias);
-    }
-
-    @Override
     public List<Heroe> findAllHeroes() throws IOException, SQLException{
         return (List<Heroe>) heroeRepository.findAll();
     }
@@ -33,6 +26,11 @@ public class HeroeServiceImpl implements HeroeService {
     @Override
     public Optional<Heroe> findByIdHeroe(String name) throws IOException, SQLException{
         return (Optional<Heroe>) heroeRepository.findById(name);
+    }
+
+    @Override
+    public Optional<Heroe> findByAliasHeroe(String alias) throws IOException, SQLException {
+        return (Optional<Heroe>) heroeRepository.findById(alias);
     }
 
     @Override

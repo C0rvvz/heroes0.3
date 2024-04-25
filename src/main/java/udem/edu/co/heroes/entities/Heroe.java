@@ -22,4 +22,7 @@ public class Heroe{
     @OneToMany(mappedBy = "heroe", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Poder> poder;
+
+    public Heroe(String batman, String pepito) {
+    }
 }
