@@ -54,9 +54,10 @@ class PoderServiceImplTest {
     }
 
     @Test
-    void findAllPoderNull() throws SQLException, IOException {
-        when(poderRepository.findAll()).thenReturn(null);
-        assertNull(poderService.findAllPoder());
+    void findAllPoderVacio() throws SQLException, IOException {
+        List<Poder> poderes = new ArrayList<>();
+        when(poderRepository.findAll()).thenReturn(poderes);
+        assertEquals(poderes, poderService.findAllPoder());
     }
 
     @Test

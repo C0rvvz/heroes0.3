@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class HeroeServiceImplTest {
@@ -52,9 +52,12 @@ class HeroeServiceImplTest {
     }
 
     @Test
-    void findAllHeroesNull() throws SQLException, IOException {
-        when(heroeRepository.findAll()).thenReturn(null);
-        assertNull(heroeService.findAllHeroes());
+    void findAllHeroesVacio() throws SQLException, IOException {
+        List<Heroe> heroes = new ArrayList<>();
+        heroes.size();
+        when(heroeRepository.findAll()).thenReturn(heroes);
+        List<Heroe> a = heroeService.findAllHeroes();
+        assertTrue(a.isEmpty());
     }
 
     @Test
@@ -101,7 +104,7 @@ class HeroeServiceImplTest {
 
     @Test
     void updateHeroeNull() throws IOException {
-        when(heroeRepository.save(heroe)).thenReturn(heroe);
-        assertNotNull(heroeService.updateHeroe(heroe.getName(),heroe));
+        when(heroeRepository.save(null)).thenReturn(null);
+        assertNull(heroeService.updateHeroe(null,null));
     }
 }
