@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name="heroe")
 public class Heroe{
 
@@ -24,5 +21,32 @@ public class Heroe{
     private List<Poder> poder;
 
     public Heroe(String batman, String pepito) {
+    }
+
+    public Heroe() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public List<Poder> getPoder() {
+        return poder;
+    }
+
+    public void setPoder(List<Poder> poder) {
+        this.poder = poder;
     }
 }

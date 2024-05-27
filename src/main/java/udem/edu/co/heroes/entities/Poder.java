@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
 @Table(name="poder")
 public class Poder {
 
@@ -19,6 +17,25 @@ public class Poder {
 
     public Poder(String name, Heroe heroe) {
         this.name = name;
+        this.heroe = heroe;
+    }
+
+    public Poder() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Heroe getHeroe() {
+        return heroe;
+    }
+
+    public void setHeroe(Heroe heroe) {
         this.heroe = heroe;
     }
 }
