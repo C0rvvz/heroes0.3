@@ -56,6 +56,7 @@ public class HeroeController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/heroe")
     public Heroe createHeroe(@RequestBody() Heroe heroe){
         try {
@@ -64,7 +65,6 @@ public class HeroeController {
             System.err.println("ERROR: informacion no valida:\n");
             return null;
         }
-
     }
 
     @PutMapping("/heroe/{name}")
