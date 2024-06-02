@@ -17,6 +17,7 @@ public class PoderController {
     @Autowired
     PoderService poderService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/poder")
     public List<Poder> findAllPoder(){
         try {
@@ -30,6 +31,7 @@ public class PoderController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/poder/{name}")
     public Optional<Poder> findPoderById(@PathVariable("name") String name){
         try {
@@ -43,6 +45,7 @@ public class PoderController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/poder")
     public Poder createPoder(@RequestBody() Poder poder){
         try {
@@ -53,6 +56,7 @@ public class PoderController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/poder/{name}")
     public Poder updatePoder(@PathVariable("name") String name, @RequestBody() Poder poder){
         try {
@@ -63,6 +67,7 @@ public class PoderController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/poder/{name}")
     public void deletePoder(@PathVariable("name") String name){
         try {

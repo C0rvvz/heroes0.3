@@ -17,6 +17,7 @@ public class HeroeController {
     @Autowired
     HeroeService heroeService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/heroe")
     public List<Heroe> findAllHeroes(){
         try {
@@ -30,6 +31,7 @@ public class HeroeController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/heroe/{name}")
     public Optional<Heroe> findHeroeById(@PathVariable("name") String name) {
         try {
@@ -43,6 +45,7 @@ public class HeroeController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/heroe/alias/{alias}")
     public Optional<Heroe> findHeroeByAlias(@PathVariable("alias") String alias){
         try {
@@ -67,6 +70,7 @@ public class HeroeController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/heroe/{name}")
     public Heroe updateHeroe(@PathVariable("name") String name , @RequestBody() Heroe heroe){
         try {
@@ -77,6 +81,7 @@ public class HeroeController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/heroe/{name}")
     public void deleteHeroe(@PathVariable("name") String name){
         try {
