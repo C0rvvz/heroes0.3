@@ -11,13 +11,11 @@ public class Poder {
 
     @Id
     private String name;
+    private String heroe_name;
 
-    @ManyToOne
-    private Heroe heroe;
-
-    public Poder(String name, Heroe heroe) {
+    public Poder(String name, String heroe_name) {
         this.name = name;
-        this.heroe = heroe;
+        this.heroe_name = heroe_name;
     }
 
     public Poder() {
@@ -31,11 +29,11 @@ public class Poder {
         this.name = name;
     }
 
-    public Heroe getHeroe() {
-        return heroe;
+    public String getHeroe_name() {
+        return heroe_name;
     }
 
-    public void setHeroe(Heroe heroe) {
-        this.heroe = heroe;
+    public void setHeroe_name(String heroe_name) {
+        this.heroe_name = heroe_name;
     }
 }

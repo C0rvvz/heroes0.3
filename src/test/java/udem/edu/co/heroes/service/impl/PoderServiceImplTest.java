@@ -41,7 +41,6 @@ class PoderServiceImplTest {
     @BeforeEach
     void setUp() {
         heroe = new Heroe("Batman", "Pepito");
-        poder = new Poder("Correr", heroe);
         poderes = new ArrayList<>();
     }
 

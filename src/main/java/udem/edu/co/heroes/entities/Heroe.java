@@ -16,8 +16,7 @@ public class Heroe{
     private String name;
     private String alias;
 
-    @OneToMany(mappedBy = "heroe", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @OneToMany(mappedBy = "heroe_name", cascade = CascadeType.ALL)
     private List<Poder> poder;
 
     public Heroe(String batman, String pepito) {

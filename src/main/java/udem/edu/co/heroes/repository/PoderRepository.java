@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import udem.edu.co.heroes.entities.Poder;
 
 @Repository
-public interface PoderRepository extends JpaRepository<Poder, String> {
+public interface PoderRepository extends JpaRepository<Poder,String> {
 }

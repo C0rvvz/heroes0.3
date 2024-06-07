@@ -1,6 +1,7 @@
 package udem.edu.co.heroes.service;
 
 import org.springframework.stereotype.Service;
+import udem.edu.co.heroes.entities.Heroe;
 import udem.edu.co.heroes.entities.Poder;
 
 import java.io.IOException;
